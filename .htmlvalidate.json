@@ -1,9 +1,11 @@
 {
   "extends": ["html-validate:recommended"],
+  "elements": [
+    "html5"
+  ],
   "rules": {
-    "void-style": "off",
-    "no-inline-style": "off",
-    "require-sri": "off",
-    "no-trailing-whitespace": "off"
+    "no-redundant-role": "off",
+    "tel-non-breaking": "off",
+    "aria-label-misuse": "off"
   }
 }
