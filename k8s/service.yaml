@@ -1,0 +1,59 @@
+# Kubernetes Service manifest for XYZ Hotel Lagos Landing Page
+# Exposes the application internally within the cluster using ClusterIP
+
+apiVersion: v1
+kind: Service
+metadata:
+  # Service name following Kubernetes naming conventions
+  name: xyz-hotel-landing-service
+  
+  # Namespace for resource isolation (default namespace)
+  namespace: default
+  
+  # Labels for resource identification and selection
+  labels:
+    app: xyz-hotel-landing
+    environment: production
+    version: v1.0.0
+    component: frontend
+    tier: presentation
+    managed-by: kubernetes
+  
+  # Annotations for additional metadata and documentation
+  annotations:
+    description: "XYZ Hotel Lagos landing page internal service"
+    contact: "devops@xyzhotel.com"
+
+spec:
+  # Service type: ClusterIP for internal cluster communication only
+  # ClusterIP provides a stable internal IP address for pod-to-pod communication
+  # Not accessible from outside the cluster - use Ingress for external access
+  type: ClusterIP
+  
+  # Selector to identify pods that this service routes traffic to
+  # Must match the labels defined in the Deployment pod template
+  selector:
+    app: xyz-hotel-landing
+  
+  # Port configuration for service endpoints
+  ports:
+    # HTTP port for web traffic
+    - name: http
+      # Port exposed by the service (internal cluster port)
+      port: 80
+      # Port on the container where traffic is forwarded
+      targetPort: 8080
+      # Protocol for network communication
+      protocol: TCP
+  
+  # Session affinity configuration for sticky sessions
+  # ClientIP ensures requests from the same client IP are routed to the same pod
+  # Useful for maintaining session state and improving cache hit rates
+  sessionAffinity: ClientIP
+  
+  # Session affinity timeout configuration
+  sessionAffinityConfig:
+    clientIP:
+      # Session timeout in seconds (3 hours)
+      # After this period, client may be routed to a different pod
+      timeoutSeconds: 10800
