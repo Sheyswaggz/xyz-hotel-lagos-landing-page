@@ -3,78 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="XYZ Hotel Lagos - Luxury accommodation in the heart of Lagos, Nigeria. Experience world-class hospitality with modern amenities.">
-    <meta name="keywords" content="hotel, Lagos, Nigeria, luxury accommodation, business travel, vacation">
-    <title>XYZ Hotel Lagos - Luxury Accommodation in Lagos, Nigeria</title>
+    <meta name="description" content="Experience luxury accommodation at XYZ Hotel Lagos. Book your stay at Nigeria's premier boutique hotel with world-class amenities and exceptional service.">
+    <meta name="keywords" content="luxury hotel Lagos, boutique hotel Nigeria, XYZ Hotel, Lagos accommodation, premium hotel">
+    <title>XYZ Hotel Lagos - Luxury Boutique Hotel in the Heart of Lagos</title>
 
-    <!-- Preconnect to external domains for performance -->
+    <!-- Preconnect to external domains -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="css/styles.css">
 
-    <!-- Favicon -->
-
-    <!-- Open Graph tags for social media -->
-    <meta property="og:title" content="XYZ Hotel Lagos - Luxury Accommodation">
-    <meta property="og:description" content="Experience world-class hospitality in the heart of Lagos, Nigeria">
-
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://xyzhotellagos.com">
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Hotel",
+      "name": "XYZ Hotel Lagos",
+      "description": "Luxury boutique hotel in Lagos, Nigeria",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "123 Victoria Island",
+        "addressLocality": "Lagos",
+        "addressCountry": "NG"
+      }
+    }
+    </script>
 </head>
 <body>
-    <!-- Header Section -->
+    <!-- Header with Navigation -->
     <header class="header">
-        <nav class="navbar">
-            <div class="container">
-                <div class="nav-wrapper">
-                    <a href="#" class="logo">XYZ Hotel Lagos</a>
-                    <button class="menu-toggle" aria-label="Toggle menu">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </button>
-                    <ul class="nav-menu">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#rooms">Rooms</a></li>
-                        <li><a href="#amenities">Amenities</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                        <li><a href="#book" class="btn-primary">Book Now</a></li>
-                    </ul>
-                </div>
+        <nav class="nav-container">
+            <div class="logo">
+                <h1>XYZ Hotel</h1>
             </div>
+            <button type="button" class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#rooms">Rooms</a></li>
+                <li><a href="#amenities">Amenities</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#book" class="btn-primary">Book Now</a></li>
+            </ul>
         </nav>
     </header>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1 class="hero-title">Welcome to XYZ Hotel Lagos</h1>
-            <p class="hero-subtitle">Experience Luxury in the Heart of Lagos</p>
+            <h2 class="hero-title">Welcome to Paradise</h2>
+            <p class="hero-subtitle">Experience luxury redefined in the heart of Lagos</p>
             <a href="#book" class="btn-primary btn-large">Book Your Stay</a>
         </div>
     </section>
 
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About XYZ Hotel</h2>
+                    <p>Nestled in the vibrant heart of Lagos, XYZ Hotel offers an unparalleled blend of luxury, comfort, and Nigerian hospitality. Our boutique hotel features elegantly designed rooms, world-class amenities, and personalized service that caters to both business and leisure travelers.</p>
+                    <p>With stunning views of the Lagos skyline and easy access to the city's premier attractions, XYZ Hotel is your perfect home away from home.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800" alt="XYZ Hotel Exterior" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Rooms Section -->
-    <section id="rooms" class="rooms">
+    <section id="rooms" class="rooms-section">
         <div class="container">
             <h2 class="section-title">Our Rooms</h2>
-            <p class="section-subtitle">Choose from our selection of luxury accommodations</p>
+            <p class="section-subtitle">Choose from our selection of luxurious accommodations</p>
             <div class="rooms-grid">
                 <div class="room-card">
                     <div class="room-image">
-                        <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=800" alt="Deluxe Room" loading="lazy">
+                        <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=600" alt="Deluxe Room" loading="lazy">
                     </div>
-                    <div class="room-content">
+                    <div class="room-details">
                         <h3>Deluxe Room</h3>
                         <p class="room-price">₦45,000 <span>per night</span></p>
-                        <p>Spacious room with king-size bed, modern amenities, and city views.</p>
                         <ul class="room-features">
                             <li>King-size bed</li>
+                            <li>City view</li>
                             <li>Free Wi-Fi</li>
-                            <li>Air conditioning</li>
-                            <li>Smart TV</li>
+                            <li>Mini bar</li>
                         </ul>
                         <a href="#book" class="btn-secondary">Book Now</a>
                     </div>
@@ -82,17 +103,16 @@
 
                 <div class="room-card">
                     <div class="room-image">
-                        <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800" alt="Executive Suite" loading="lazy">
+                        <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600" alt="Executive Suite" loading="lazy">
                     </div>
-                    <div class="room-content">
+                    <div class="room-details">
                         <h3>Executive Suite</h3>
                         <p class="room-price">₦85,000 <span>per night</span></p>
-                        <p>Luxurious suite with separate living area, premium amenities, and panoramic views.</p>
                         <ul class="room-features">
                             <li>Separate living area</li>
-                            <li>Premium bedding</li>
-                            <li>Mini bar</li>
-                            <li>Work desk</li>
+                            <li>Ocean view</li>
+                            <li>Premium amenities</li>
+                            <li>24/7 room service</li>
                         </ul>
                         <a href="#book" class="btn-secondary">Book Now</a>
                     </div>
@@ -100,14 +120,13 @@
 
                 <div class="room-card">
                     <div class="room-image">
-                        <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800" alt="Presidential Suite" loading="lazy">
+                        <img src="https://images.unsplash.com/photo-1591088398332-8a7791972843?w=600" alt="Presidential Suite" loading="lazy">
                     </div>
-                    <div class="room-content">
+                    <div class="room-details">
                         <h3>Presidential Suite</h3>
                         <p class="room-price">₦150,000 <span>per night</span></p>
-                        <p>Ultimate luxury with multiple rooms, private terrace, and exclusive services.</p>
                         <ul class="room-features">
-                            <li>Multiple bedrooms</li>
+                            <li>Luxury penthouse</li>
                             <li>Private terrace</li>
                             <li>Butler service</li>
                             <li>Jacuzzi</li>
@@ -120,173 +139,113 @@
     </section>
 
     <!-- Amenities Section -->
-    <section id="amenities" class="amenities">
+    <section id="amenities" class="amenities-section">
         <div class="container">
             <h2 class="section-title">World-Class Amenities</h2>
-            <p class="section-subtitle">Everything you need for a perfect stay</p>
             <div class="amenities-grid">
                 <div class="amenity-card">
                     <div class="amenity-icon">🏊</div>
-                    <h3>Swimming Pool</h3>
-                    <p>Relax in our temperature-controlled outdoor pool</p>
+                    <h3>Infinity Pool</h3>
+                    <p>Relax in our rooftop infinity pool with panoramic city views</p>
                 </div>
                 <div class="amenity-card">
                     <div class="amenity-icon">🍽️</div>
                     <h3>Fine Dining</h3>
-                    <p>Experience culinary excellence at our restaurant</p>
+                    <p>Savor exquisite cuisine at our award-winning restaurant</p>
                 </div>
                 <div class="amenity-card">
-                    <div class="amenity-icon">💪</div>
+                    <div class="amenity-icon">💆</div>
+                    <h3>Luxury Spa</h3>
+                    <p>Rejuvenate with our premium spa treatments</p>
+                </div>
+                <div class="amenity-card">
+                    <div class="amenity-icon">🏋️</div>
                     <h3>Fitness Center</h3>
                     <p>State-of-the-art gym equipment available 24/7</p>
                 </div>
                 <div class="amenity-card">
-                    <div class="amenity-icon">🧖</div>
-                    <h3>Spa & Wellness</h3>
-                    <p>Rejuvenate with our premium spa treatments</p>
+                    <div class="amenity-icon">🚗</div>
+                    <h3>Valet Parking</h3>
+                    <p>Complimentary valet service for all guests</p>
                 </div>
                 <div class="amenity-card">
                     <div class="amenity-icon">📶</div>
-                    <h3>Free Wi-Fi</h3>
-                    <p>High-speed internet throughout the property</p>
-                </div>
-                <div class="amenity-card">
-                    <div class="amenity-icon">🚗</div>
-                    <h3>Parking</h3>
-                    <p>Complimentary secure parking for all guests</p>
+                    <h3>High-Speed WiFi</h3>
+                    <p>Stay connected with free high-speed internet</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery-section">
         <div class="container">
-            <div class="about-content">
-                <div class="about-text">
-                    <h2 class="section-title">About XYZ Hotel Lagos</h2>
-                    <p>Located in the vibrant heart of Lagos, XYZ Hotel offers an unparalleled blend of luxury, comfort, and Nigerian hospitality. Our hotel has been serving discerning travelers since 2010, providing world-class accommodation and services.</p>
-                    <p>Whether you're visiting for business or pleasure, our dedicated team ensures every aspect of your stay exceeds expectations. From our elegantly appointed rooms to our exceptional dining experiences, we create memorable moments for every guest.</p>
-                    <div class="about-stats">
-                        <div class="stat">
-                            <h3>150+</h3>
-                            <p>Luxury Rooms</p>
-                        </div>
-                        <div class="stat">
-                            <h3>4.8/5</h3>
-                            <p>Guest Rating</p>
-                        </div>
-                        <div class="stat">
-                            <h3>24/7</h3>
-                            <p>Concierge Service</p>
-                        </div>
-                    </div>
+            <h2 class="section-title">Gallery</h2>
+            <p class="section-subtitle">Luxury &amp; Comfort</p>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=600" alt="Hotel Lobby" loading="lazy">
                 </div>
-                <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800" alt="Hotel Exterior" loading="lazy">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=600" alt="Restaurant" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=600" alt="Pool Area" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1595576508898-0ad5c879a061?w=600" alt="Spa" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600" alt="Conference Room" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1596436889106-be35e843f974?w=600" alt="Bar" loading="lazy">
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact">
+    <section id="contact" class="contact-section">
         <div class="container">
-            <h2 class="section-title">Get in Touch</h2>
-            <p class="section-subtitle">We're here to help with any questions</p>
+            <h2 class="section-title">Contact Us</h2>
             <div class="contact-content">
                 <div class="contact-info">
                     <div class="contact-item">
-                        <h3>📍 Address</h3>
+                        <h3>Address</h3>
                         <p>123 Victoria Island<br>Lagos, Nigeria</p>
                     </div>
                     <div class="contact-item">
-                        <h3>📞 Phone</h3>
+                        <h3>Phone</h3>
                         <p>+234 123 456 7890</p>
                     </div>
                     <div class="contact-item">
-                        <h3>✉️ Email</h3>
-                        <p>info@xyzhotellagos.com</p>
+                        <h3>Email</h3>
+                        <p>info@xyzhotel.com</p>
                     </div>
                     <div class="contact-item">
-                        <h3>🕐 Check-in/Check-out</h3>
-                        <p>Check-in: 2:00 PM<br>Check-out: 12:00 PM</p>
+                        <h3>Hours</h3>
+                        <p>24/7 Front Desk Service</p>
                     </div>
                 </div>
-                <form class="contact-form" id="contactForm">
-                    <div class="form-group">
-                        <input type="text" id="name" name="name" placeholder="Your Name" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" id="email" name="email" placeholder="Your Email" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="tel" id="phone" name="phone" placeholder="Your Phone">
-                    </div>
-                    <div class="form-group">
-                        <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
-                    </div>
-                    <button type="submit" class="btn-primary">Send Message</button>
-                </form>
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <input type="text" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" placeholder="Phone Number">
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Your Message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary">Send Message</button>
+                    </form>
+                </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Booking Section -->
-    <section id="book" class="booking">
-        <div class="container">
-            <h2 class="section-title">Book Your Stay</h2>
-            <p class="section-subtitle">Reserve your room today</p>
-            <form class="booking-form" id="bookingForm">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="checkin">Check-in Date</label>
-                        <input type="date" id="checkin" name="checkin" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="checkout">Check-out Date</label>
-                        <input type="date" id="checkout" name="checkout" required>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="guests">Number of Guests</label>
-                        <select id="guests" name="guests" required>
-                            <option value="">Select guests</option>
-                            <option value="1">1 Guest</option>
-                            <option value="2">2 Guests</option>
-                            <option value="3">3 Guests</option>
-                            <option value="4">4+ Guests</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="roomType">Room Type</label>
-                        <select id="roomType" name="roomType" required>
-                            <option value="">Select room type</option>
-                            <option value="deluxe">Deluxe Room</option>
-                            <option value="executive">Executive Suite</option>
-                            <option value="presidential">Presidential Suite</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="bookingName">Full Name</label>
-                    <input type="text" id="bookingName" name="bookingName" required>
-                </div>
-                <div class="form-group">
-                    <label for="bookingEmail">Email Address</label>
-                    <input type="email" id="bookingEmail" name="bookingEmail" required>
-                </div>
-                <div class="form-group">
-                    <label for="bookingPhone">Phone Number</label>
-                    <input type="tel" id="bookingPhone" name="bookingPhone" required>
-                </div>
-                <div class="form-group">
-                    <label for="specialRequests">Special Requests (Optional)</label>
-                    <textarea id="specialRequests" name="specialRequests" rows="3"></textarea>
-                </div>
-                <button type="submit" class="btn-primary btn-large">Complete Booking</button>
-            </form>
         </div>
     </section>
 
@@ -296,30 +255,23 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>XYZ Hotel Lagos</h3>
-                    <p>Experience luxury and comfort in the heart of Lagos, Nigeria.</p>
+                    <p>Your luxury destination in the heart of Lagos</p>
                 </div>
                 <div class="footer-section">
                     <h4>Quick Links</h4>
                     <ul>
-                        <li><a href="#home">Home</a></li>
                         <li><a href="#rooms">Rooms</a></li>
                         <li><a href="#amenities">Amenities</a></li>
-                        <li><a href="#about">About</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Contact Info</h4>
-                    <p>123 Victoria Island, Lagos</p>
-                    <p>Phone: +234 123 456 7890</p>
-                    <p>Email: info@xyzhotellagos.com</p>
                 </div>
                 <div class="footer-section">
                     <h4>Follow Us</h4>
                     <div class="social-links">
                         <a href="#" aria-label="Facebook">Facebook</a>
-                        <a href="#" aria-label="Twitter">Twitter</a>
                         <a href="#" aria-label="Instagram">Instagram</a>
+                        <a href="#" aria-label="Twitter">Twitter</a>
                     </div>
                 </div>
             </div>
