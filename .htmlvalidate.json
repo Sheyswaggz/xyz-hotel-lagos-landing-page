@@ -1,11 +1,12 @@
 {
-  "extends": ["html-validate:recommended"],
+  "extends": [
+    "html-validate:recommended"
+  ],
   "rules": {
-    "no-inline-style": "off",
-    "require-sri": "off",
-    "no-redundant-role": "off",
-    "svg-focusable": "off",
-    "tel-non-breaking": "off",
-    "aria-label-misuse": "off"
-  }
+    "void-style": "off",
+    "no-trailing-whitespace": "off"
+  },
+  "ignore": [
+    "node_modules/**"
+  ]
 }
