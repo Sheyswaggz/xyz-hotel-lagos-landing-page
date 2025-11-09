@@ -1,0 +1,26 @@
+# robots.txt for XYZ Hotel Lagos
+# This file controls how search engine crawlers access and index the website
+# It helps optimize crawl budget and prevents indexing of non-public pages
+
+# Allow all search engines to crawl the entire site
+User-agent: *
+Allow: /
+
+# Disallow crawling of admin areas (if they exist in the future)
+Disallow: /admin/
+
+# Disallow crawling of private areas (if they exist in the future)
+Disallow: /private/
+
+# Disallow crawling of temporary or development files
+Disallow: /*.json$
+Disallow: /*.xml$
+
+# Allow crawling of sitemap.xml specifically
+Allow: /sitemap.xml
+
+# Sitemap location for search engines
+Sitemap: https://www.xyzhotellagos.com/sitemap.xml
+
+# Crawl-delay is not set to allow maximum crawl frequency
+# This helps with faster indexing of new content and updates
