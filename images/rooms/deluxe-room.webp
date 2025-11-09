@@ -1,0 +1,1 @@
+magick images/rooms/deluxe-room.jpg -resize 800x600^ -gravity center -extent 800x600 -quality 85 -define webp:method=6 -strip images/rooms/deluxe-room.webp

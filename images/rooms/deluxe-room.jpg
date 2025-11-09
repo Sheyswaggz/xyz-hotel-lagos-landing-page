@@ -1,0 +1,1 @@
+convert source-image.jpg -resize 800x600^ -gravity center -extent 800x600 -quality 85 -strip deluxe-room.jpg

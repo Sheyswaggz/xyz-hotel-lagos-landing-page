@@ -17,8 +17,16 @@
   <meta name="twitter:description" content="Experience luxury accommodation at XYZ Hotel Lagos with world-class amenities and service.">
   <meta name="twitter:image" content="https://xyzhotellagos.com/images/hotel-exterior.jpg">
   <link rel="canonical" href="https://xyzhotellagos.com">
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://www.google.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <meta name="theme-color" content="#1a4d2e" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#0d2818" media="(prefers-color-scheme: dark)">
+  <style>
+    :root{--color-primary:#8b4513;--color-secondary:#daa520;--color-neutral:#f5f5dc;--color-text:#333;--color-white:#fff}*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}body{font-family:-apple-system,blinkmacsystemfont,"Segoe UI",roboto,"Helvetica Neue",arial,sans-serif;line-height:1.5;color:var(--color-text);background-color:var(--color-white)}header{position:fixed;top:0;left:0;width:100%;background-color:var(--color-white);box-shadow:0 2px 4px rgba(0,0,0,.1);z-index:1000}.header-container{display:flex;justify-content:space-between;align-items:center;padding:1rem;max-width:1200px;margin:0 auto}.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative}.hero-background{position:absolute;top:0;left:0;width:100%;height:100%;background-size:cover;background-position:center}.hero-background::after{content:"";position:absolute;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,.5)}.hero-content{position:relative;z-index:1;color:var(--color-white);text-align:center;padding:2rem}img{aspect-ratio:attr(width)/attr(height)}
+  </style>
+  <link rel="stylesheet" href="css/styles.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="css/styles.css"></noscript>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -117,7 +125,10 @@
   </header>
   <main id="main" role="main">
     <section id="home" class="hero" aria-labelledby="hero-title" data-section="hero">
-      <div class="hero-background" role="img" aria-label="Luxury hotel exterior with palm trees and modern architecture"></div>
+      <picture class="hero-background" role="img" aria-label="Luxury hotel exterior with palm trees and modern architecture">
+        <source srcset="images/hero-bg-320.webp 320w, images/hero-bg-768.webp 768w, images/hero-bg-1024.webp 1024w, images/hero-bg-1920.webp 1920w" sizes="100vw" type="image/webp">
+        <img src="images/hero-bg.jpg" srcset="images/hero-bg-320.jpg 320w, images/hero-bg-768.jpg 768w, images/hero-bg-1024.jpg 1024w, images/hero-bg-1920.jpg 1920w" sizes="100vw" alt="Luxury hotel exterior with palm trees and modern architecture" width="1920" height="1080">
+      </picture>
       <div class="hero-content">
         <h1 id="hero-title">Welcome to XYZ Hotel Lagos</h1>
         <p class="hero-subtitle">Experience Luxury and Comfort in the Heart of Lagos</p>
@@ -240,7 +251,10 @@
         <div class="rooms-grid">
           <article class="room-card" data-room-type="deluxe">
             <div class="room-image">
-              <img src="images/deluxe-room.jpg" alt="Spacious deluxe room with king-size bed, modern furnishings, and city view" loading="lazy" width="600" height="400">
+              <picture>
+                <source srcset="images/deluxe-room-320.webp 320w, images/deluxe-room-768.webp 768w, images/deluxe-room-1024.webp 1024w" sizes="(max-width: 768px) 100vw, 50vw" type="image/webp">
+                <img src="images/deluxe-room.jpg" srcset="images/deluxe-room-320.jpg 320w, images/deluxe-room-768.jpg 768w, images/deluxe-room-1024.jpg 1024w" sizes="(max-width: 768px) 100vw, 50vw" alt="Spacious deluxe room with king-size bed, modern furnishings, and city view" loading="lazy" width="600" height="400">
+              </picture>
             </div>
             <div class="room-content">
               <h3>Deluxe Room</h3>
@@ -259,7 +273,10 @@
           </article>
           <article class="room-card" data-room-type="executive">
             <div class="room-image">
-              <img src="images/executive-suite.jpg" alt="Luxurious executive suite with separate living area, premium furnishings, and ocean view" loading="lazy" width="600" height="400">
+              <picture>
+                <source srcset="images/executive-suite-320.webp 320w, images/executive-suite-768.webp 768w, images/executive-suite-1024.webp 1024w" sizes="(max-width: 768px) 100vw, 50vw" type="image/webp">
+                <img src="images/executive-suite.jpg" srcset="images/executive-suite-320.jpg 320w, images/executive-suite-768.jpg 768w, images/executive-suite-1024.jpg 1024w" sizes="(max-width: 768px) 100vw, 50vw" alt="Luxurious executive suite with separate living area, premium furnishings, and ocean view" loading="lazy" width="600" height="400">
+              </picture>
             </div>
             <div class="room-content">
               <h3>Executive Suite</h3>
@@ -278,7 +295,10 @@
           </article>
           <article class="room-card" data-room-type="presidential">
             <div class="room-image">
-              <img src="images/presidential-suite.jpg" alt="Opulent presidential suite with panoramic views, dining area, and luxury furnishings" loading="lazy" width="600" height="400">
+              <picture>
+                <source srcset="images/presidential-suite-320.webp 320w, images/presidential-suite-768.webp 768w, images/presidential-suite-1024.webp 1024w" sizes="(max-width: 768px) 100vw, 50vw" type="image/webp">
+                <img src="images/presidential-suite.jpg" srcset="images/presidential-suite-320.jpg 320w, images/presidential-suite-768.jpg 768w, images/presidential-suite-1024.jpg 1024w" sizes="(max-width: 768px) 100vw, 50vw" alt="Opulent presidential suite with panoramic views, dining area, and luxury furnishings" loading="lazy" width="600" height="400">
+              </picture>
             </div>
             <div class="room-content">
               <h3>Presidential Suite</h3>
@@ -306,39 +326,66 @@
         </header>
         <div class="gallery-grid" data-gallery>
           <figure class="gallery-item" data-category="exterior">
-            <img src="images/hotel-exterior-night.jpg" alt="XYZ Hotel illuminated at night with modern architecture and landscaped gardens" loading="lazy" width="400" height="300">
+            <picture>
+              <source srcset="images/hotel-exterior-night-320.webp 320w, images/hotel-exterior-night-768.webp 768w" sizes="(max-width: 768px) 50vw, 25vw" type="image/webp">
+              <img src="images/hotel-exterior-night.jpg" srcset="images/hotel-exterior-night-320.jpg 320w, images/hotel-exterior-night-768.jpg 768w" sizes="(max-width: 768px) 50vw, 25vw" alt="XYZ Hotel illuminated at night with modern architecture and landscaped gardens" loading="lazy" width="400" height="300">
+            </picture>
             <figcaption>Hotel Exterior</figcaption>
           </figure>
           <figure class="gallery-item" data-category="pool">
-            <img src="images/infinity-pool.jpg" alt="Rooftop infinity pool with lounge chairs and Lagos skyline in background" loading="lazy" width="400" height="300">
+            <picture>
+              <source srcset="images/infinity-pool-320.webp 320w, images/infinity-pool-768.webp 768w" sizes="(max-width: 768px) 50vw, 25vw" type="image/webp">
+              <img src="images/infinity-pool.jpg" srcset="images/infinity-pool-320.jpg 320w, images/infinity-pool-768.jpg 768w" sizes="(max-width: 768px) 50vw, 25vw" alt="Rooftop infinity pool with lounge chairs and Lagos skyline in background" loading="lazy" width="400" height="300">
+            </picture>
             <figcaption>Infinity Pool</figcaption>
           </figure>
           <figure class="gallery-item" data-category="dining">
-            <img src="images/restaurant-interior.jpg" alt="Elegant restaurant interior with fine dining setup and ambient lighting" loading="lazy" width="400" height="300">
+            <picture>
+              <source srcset="images/restaurant-interior-320.webp 320w, images/restaurant-interior-768.webp 768w" sizes="(max-width: 768px) 50vw, 25vw" type="image/webp">
+              <img src="images/restaurant-interior.jpg" srcset="images/restaurant-interior-320.jpg 320w, images/restaurant-interior-768.jpg 768w" sizes="(max-width: 768px) 50vw, 25vw" alt="Elegant restaurant interior with fine dining setup and ambient lighting" loading="lazy" width="400" height="300">
+            </picture>
             <figcaption>Restaurant</figcaption>
           </figure>
           <figure class="gallery-item" data-category="rooms">
-            <img src="images/suite-bedroom.jpg" alt="Luxurious suite bedroom with king bed and floor-to-ceiling windows" loading="lazy" width="400" height="300">
+            <picture>
+              <source srcset="images/suite-bedroom-320.webp 320w, images/suite-bedroom-768.webp 768w" sizes="(max-width: 768px) 50vw, 25vw" type="image/webp">
+              <img src="images/suite-bedroom.jpg" srcset="images/suite-bedroom-320.jpg 320w, images/suite-bedroom-768.jpg 768w" sizes="(max-width: 768px) 50vw, 25vw" alt="Luxurious suite bedroom with king bed and floor-to-ceiling windows" loading="lazy" width="400" height="300">
+            </picture>
             <figcaption>Suite Bedroom</figcaption>
           </figure>
           <figure class="gallery-item" data-category="facilities">
-            <img src="images/gym-equipment.jpg" alt="Modern fitness center with cardio machines and free weights" loading="lazy" width="400" height="300">
+            <picture>
+              <source srcset="images/gym-equipment-320.webp 320w, images/gym-equipment-768.webp 768w" sizes="(max-width: 768px) 50vw, 25vw" type="image/webp">
+              <img src="images/gym-equipment.jpg" srcset="images/gym-equipment-320.jpg 320w, images/gym-equipment-768.jpg 768w" sizes="(max-width: 768px) 50vw, 25vw" alt="Modern fitness center with cardio machines and free weights" loading="lazy" width="400" height="300">
+            </picture>
             <figcaption>Fitness Center</figcaption>
           </figure>
           <figure class="gallery-item" data-category="facilities">
-            <img src="images/conference-room.jpg" alt="Spacious conference room with modern AV equipment and seating for 50" loading="lazy" width="400" height="300">
+            <picture>
+              <source srcset="images/conference-room-320.webp 320w, images/conference-room-768.webp 768w" sizes="(max-width: 768px) 50vw, 25vw" type="image/webp">
+              <img src="images/conference-room.jpg" srcset="images/conference-room-320.jpg 320w, images/conference-room-768.jpg 768w" sizes="(max-width: 768px) 50vw, 25vw" alt="Spacious conference room with modern AV equipment and seating for 50" loading="lazy" width="400" height="300">
+            </picture>
             <figcaption>Conference Room</figcaption>
           </figure>
           <figure class="gallery-item" data-category="dining">
-            <img src="images/bar-lounge.jpg" alt="Sophisticated bar lounge with premium spirits and comfortable seating" loading="lazy" width="400" height="300">
+            <picture>
+              <source srcset="images/bar-lounge-320.webp 320w, images/bar-lounge-768.webp 768w" sizes="(max-width: 768px) 50vw, 25vw" type="image/webp">
+              <img src="images/bar-lounge.jpg" srcset="images/bar-lounge-320.jpg 320w, images/bar-lounge-768.jpg 768w" sizes="(max-width: 768px) 50vw, 25vw" alt="Sophisticated bar lounge with premium spirits and comfortable seating" loading="lazy" width="400" height="300">
+            </picture>
             <figcaption>Bar Lounge</figcaption>
           </figure>
           <figure class="gallery-item" data-category="exterior">
-            <img src="images/hotel-entrance.jpg" alt="Grand hotel entrance with valet service and tropical landscaping" loading="lazy" width="400" height="300">
+            <picture>
+              <source srcset="images/hotel-entrance-320.webp 320w, images/hotel-entrance-768.webp 768w" sizes="(max-width: 768px) 50vw, 25vw" type="image/webp">
+              <img src="images/hotel-entrance.jpg" srcset="images/hotel-entrance-320.jpg 320w, images/hotel-entrance-768.jpg 768w" sizes="(max-width: 768px) 50vw, 25vw" alt="Grand hotel entrance with valet service and tropical landscaping" loading="lazy" width="400" height="300">
+            </picture>
             <figcaption>Hotel Entrance</figcaption>
           </figure>
           <figure class="gallery-item" data-category="rooms">
-            <img src="images/bathroom-luxury.jpg" alt="Marble bathroom with rain shower, bathtub, and premium amenities" loading="lazy" width="400" height="300">
+            <picture>
+              <source srcset="images/bathroom-luxury-320.webp 320w, images/bathroom-luxury-768.webp 768w" sizes="(max-width: 768px) 50vw, 25vw" type="image/webp">
+              <img src="images/bathroom-luxury.jpg" srcset="images/bathroom-luxury-320.jpg 320w, images/bathroom-luxury-768.jpg 768w" sizes="(max-width: 768px) 50vw, 25vw" alt="Marble bathroom with rain shower, bathtub, and premium amenities" loading="lazy" width="400" height="300">
+            </picture>
             <figcaption>Luxury Bathroom</figcaption>
           </figure>
         </div>
@@ -506,5 +553,6 @@
       </div>
     </div>
   </footer>
+  <script src="js/main.js" defer></script>
 </body>
 </html>

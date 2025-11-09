@@ -5,6 +5,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "build": "echo \"Images optimized manually using ImageOptim/Squoosh\"",
     "lint": "npm run lint:js && npm run lint:css && npm run lint:html",
     "lint:js": "eslint js/**/*.js",
     "lint:css": "stylelint css/**/*.css",
