@@ -104,7 +104,6 @@ jobs:
     name: Build Docker Image
     needs:
       - lint
-      - test
       - security-scan
     runs-on: ubuntu-latest
     permissions:
