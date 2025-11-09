@@ -1,0 +1,5 @@
+# Example using ImageMagick
+   convert input.jpg -resize 1920x1080^ -gravity center -extent 1920x1080 -quality 85 -strip hero-bg.jpg
+   
+   # Example using Sharp (Node.js)
+   npx sharp-cli --input input.jpg --output hero-bg.jpg --resize 1920,1080 --quality 85
