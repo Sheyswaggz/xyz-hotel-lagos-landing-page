@@ -1,0 +1,77 @@
+{
+  "extends": ["stylelint-config-standard"],
+  "plugins": ["stylelint-order", "stylelint-a11y"],
+  "rules": {
+    "order/properties-alphabetical-order": true,
+    "color-hex-length": "long",
+    "color-named": "never",
+    "color-no-invalid-hex": true,
+    "declaration-no-important": true,
+    "font-family-name-quotes": "always-where-recommended",
+    "font-weight-notation": "numeric",
+    "function-url-quotes": "always",
+    "length-zero-no-unit": true,
+    "number-max-precision": 3,
+    "selector-class-pattern": "^[a-z][a-z0-9]*(-[a-z0-9]+)*$",
+    "selector-id-pattern": "^[a-z][a-z0-9]*(-[a-z0-9]+)*$",
+    "selector-max-id": 0,
+    "selector-no-qualifying-type": [
+      true,
+      {
+        "ignore": ["attribute"]
+      }
+    ],
+    "shorthand-property-no-redundant-values": true,
+    "value-keyword-case": "lower",
+    "a11y/content-property-no-static-value": true,
+    "a11y/font-size-is-readable": [
+      true,
+      {
+        "severity": "warning"
+      }
+    ],
+    "a11y/line-height-is-vertical-rhythmed": [
+      true,
+      {
+        "severity": "warning"
+      }
+    ],
+    "a11y/media-prefers-reduced-motion": true,
+    "a11y/no-display-none": [
+      true,
+      {
+        "severity": "warning"
+      }
+    ],
+    "a11y/no-obsolete-attribute": true,
+    "a11y/no-obsolete-element": true,
+    "a11y/no-text-align-justify": true,
+    "a11y/selector-pseudo-class-focus": true,
+    "at-rule-no-unknown": [
+      true,
+      {
+        "ignoreAtRules": ["supports"]
+      }
+    ],
+    "custom-property-pattern": "^[a-z][a-z0-9]*(-[a-z0-9]+)*$",
+    "declaration-block-no-duplicate-properties": [
+      true,
+      {
+        "ignore": ["consecutive-duplicates-with-different-values"]
+      }
+    ],
+    "no-descending-specificity": null,
+    "property-no-vendor-prefix": [
+      true,
+      {
+        "ignoreProperties": ["appearance", "backdrop-filter"]
+      }
+    ],
+    "value-no-vendor-prefix": [
+      true,
+      {
+        "ignoreValues": ["box", "inline-box"]
+      }
+    ]
+  }
+}
