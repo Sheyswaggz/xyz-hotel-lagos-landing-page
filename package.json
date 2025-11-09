@@ -1,0 +1,27 @@
+{
+  "name": "xyz-hotel-landing",
+  "version": "1.0.0",
+  "description": "XYZ Hotel Lagos landing page",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "lint": "npm run lint:js && npm run lint:css && npm run lint:html",
+    "lint:js": "eslint js/**/*.js",
+    "lint:css": "stylelint css/**/*.css",
+    "lint:html": "html-validate index.html",
+    "test": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.40.0",
+    "eslint": "^8.55.0",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "html-validate": "^8.7.0",
+    "stylelint": "^16.0.0",
+    "stylelint-a11y": "^1.2.3",
+    "stylelint-config-standard": "^35.0.0",
+    "stylelint-order": "^6.0.4"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
