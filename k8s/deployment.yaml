@@ -1,0 +1,246 @@
+# Kubernetes Deployment manifest for XYZ Hotel Lagos Landing Page
+# Production-ready deployment with security best practices, health probes, and resource management
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  # Deployment name following Kubernetes naming conventions
+  name: xyz-hotel-landing-deployment
+  
+  # Namespace for resource isolation (default namespace for this deployment)
+  namespace: default
+  
+  # Labels for resource identification and selection
+  labels:
+    app: xyz-hotel-landing
+    environment: production
+    version: v1.0.0
+    component: frontend
+    tier: presentation
+    managed-by: kubernetes
+  
+  # Annotations for additional metadata and documentation
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+    description: "XYZ Hotel Lagos landing page deployment with nginx web server"
+    contact: "devops@xyzhotel.com"
+
+spec:
+  # Number of pod replicas for high availability
+  # Minimum 2 replicas ensures zero-downtime during updates and node failures
+  replicas: 2
+  
+  # Number of old ReplicaSets to retain for rollback capability
+  revisionHistoryLimit: 10
+  
+  # Deployment strategy for zero-downtime updates
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      # Maximum number of pods that can be created above desired replicas during update
+      # Allows 1 extra pod temporarily for smooth transition
+      maxSurge: 1
+      
+      # Maximum number of pods that can be unavailable during update
+      # 0 ensures all pods remain available during rolling update
+      maxUnavailable: 0
+  
+  # Selector to identify pods managed by this deployment
+  selector:
+    matchLabels:
+      app: xyz-hotel-landing
+  
+  # Pod template specification
+  template:
+    metadata:
+      # Labels applied to pods created from this template
+      labels:
+        app: xyz-hotel-landing
+        environment: production
+        version: v1.0.0
+        component: frontend
+        tier: presentation
+      
+      # Annotations for monitoring and observability
+      annotations:
+        # Prometheus scraping configuration for metrics collection
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8080"
+        prometheus.io/path: "/metrics"
+        
+        # Specify default container for kubectl commands
+        kubectl.kubernetes.io/default-container: "xyz-hotel-landing"
+    
+    spec:
+      # Security context for all containers in the pod
+      # Enforces security best practices at pod level
+      securityContext:
+        # Prevent containers from running as root user
+        runAsNonRoot: true
+        
+        # Run containers as user ID 1000 (non-privileged user)
+        runAsUser: 1000
+        
+        # Set primary group ID for file system operations
+        fsGroup: 1000
+        
+        # Enable seccomp profile for syscall filtering
+        seccompProfile:
+          type: RuntimeDefault
+      
+      # Grace period for pod termination to allow clean shutdown
+      # Allows 30 seconds for connections to drain and cleanup
+      terminationGracePeriodSeconds: 30
+      
+      # Main application container
+      containers:
+        - name: xyz-hotel-landing
+          
+          # Container image from GitHub Container Registry
+          # Uses latest tag - in production, use specific version tags
+          image: ghcr.io/xyz-hotel/landing:latest
+          
+          # Always pull image to ensure latest version
+          # For production, use IfNotPresent with specific tags
+          imagePullPolicy: Always
+          
+          # Container-level security context
+          securityContext:
+            # Prevent privilege escalation
+            allowPrivilegeEscalation: false
+            
+            # Make root filesystem read-only for security
+            readOnlyRootFilesystem: true
+            
+            # Run as non-root user
+            runAsNonRoot: true
+            
+            # Specific user ID for container process
+            runAsUser: 1000
+            
+            # Drop all Linux capabilities and add only required ones
+            capabilities:
+              drop:
+                - ALL
+              add:
+                - NET_BIND_SERVICE
+          
+          # Container ports exposed for networking
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          
+          # Resource requests and limits for pod scheduling and QoS
+          resources:
+            # Minimum resources guaranteed for the container
+            requests:
+              memory: 128Mi
+              cpu: 50m
+            
+            # Maximum resources the container can use
+            limits:
+              memory: 512Mi
+              cpu: 500m
+          
+          # Liveness probe to detect if container is alive
+          # Kubernetes restarts container if probe fails
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+              scheme: HTTP
+            
+            # Wait 30 seconds after container start before first probe
+            initialDelaySeconds: 30
+            
+            # Check every 10 seconds
+            periodSeconds: 10
+            
+            # Probe timeout of 5 seconds
+            timeoutSeconds: 5
+            
+            # Restart container after 3 consecutive failures
+            failureThreshold: 3
+            
+            # Number of consecutive successes to mark as healthy
+            successThreshold: 1
+          
+          # Readiness probe to detect if container is ready to serve traffic
+          # Kubernetes removes pod from service endpoints if probe fails
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+              scheme: HTTP
+            
+            # Start checking 5 seconds after container start
+            initialDelaySeconds: 5
+            
+            # Check every 5 seconds
+            periodSeconds: 5
+            
+            # Probe timeout of 3 seconds
+            timeoutSeconds: 3
+            
+            # Mark as not ready after 3 consecutive failures
+            failureThreshold: 3
+            
+            # Mark as ready after 1 successful probe
+            successThreshold: 1
+          
+          # Environment variables from ConfigMap
+          # Loads all key-value pairs from ConfigMap as environment variables
+          envFrom:
+            - configMapRef:
+                name: xyz-hotel-landing-config
+          
+          # Lifecycle hooks for graceful shutdown
+          lifecycle:
+            # PreStop hook executed before container termination
+            preStop:
+              exec:
+                # Sleep for 15 seconds to allow connection draining
+                # Gives load balancers time to remove pod from rotation
+                command:
+                  - /bin/sh
+                  - -c
+                  - sleep 15
+          
+          # Volume mounts for writable directories
+          # Required because root filesystem is read-only
+          volumeMounts:
+            # Temporary directory for nginx runtime files
+            - name: tmp
+              mountPath: /tmp
+            
+            # Nginx cache directory
+            - name: cache
+              mountPath: /var/cache/nginx
+            
+            # Nginx runtime directory
+            - name: run
+              mountPath: /var/run
+      
+      # Volumes for container mounts
+      volumes:
+        # Temporary directory using emptyDir (ephemeral storage)
+        - name: tmp
+          emptyDir:
+            sizeLimit: 100Mi
+        
+        # Cache directory using emptyDir
+        - name: cache
+          emptyDir:
+            sizeLimit: 100Mi
+        
+        # Runtime directory using emptyDir
+        - name: run
+          emptyDir:
+            sizeLimit: 10Mi
+      
+      # DNS policy for pod name resolution
+      dnsPolicy: ClusterFirst
+      
+      # Restart policy for containers
+      restartPolicy: Always

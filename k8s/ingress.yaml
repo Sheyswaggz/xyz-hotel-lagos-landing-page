@@ -1,0 +1,106 @@
+# Kubernetes Ingress manifest for XYZ Hotel Lagos Landing Page
+# Provides external HTTPS access with TLS termination and security configurations
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  # Ingress name following Kubernetes naming conventions
+  name: xyz-hotel-landing-ingress
+  
+  # Namespace for resource isolation (default namespace)
+  namespace: default
+  
+  # Labels for resource identification and selection
+  labels:
+    app: xyz-hotel-landing
+    environment: production
+    version: v1.0.0
+    component: frontend
+    tier: presentation
+    managed-by: kubernetes
+  
+  # Annotations for ingress controller configuration and TLS certificate management
+  annotations:
+    # Description and contact information
+    description: "XYZ Hotel Lagos landing page external ingress with TLS"
+    contact: "devops@xyzhotel.com"
+    
+    # TLS certificate management using cert-manager
+    # Automatically provisions and renews Let's Encrypt certificates
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    cert-manager.io/acme-challenge-type: "http01"
+    
+    # Nginx Ingress Controller configuration
+    # Force HTTPS redirect for all HTTP requests
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    
+    # Rate limiting to prevent abuse and DDoS attacks
+    # Limit to 100 requests per second per IP address
+    nginx.ingress.kubernetes.io/limit-rps: "100"
+    
+    # Connection and timeout configuration
+    # Prevent slow client attacks and ensure responsive service
+    nginx.ingress.kubernetes.io/proxy-connect-timeout: "30"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "30"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "30"
+    
+    # Request body size limit (10MB for form submissions and uploads)
+    nginx.ingress.kubernetes.io/proxy-body-size: "10m"
+    
+    # Security headers for protection against common web vulnerabilities
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      more_set_headers "X-Frame-Options: SAMEORIGIN";
+      more_set_headers "X-Content-Type-Options: nosniff";
+      more_set_headers "X-XSS-Protection: 1; mode=block";
+      more_set_headers "Referrer-Policy: strict-origin-when-cross-origin";
+      more_set_headers "Permissions-Policy: geolocation=(), microphone=(), camera=()";
+    
+    # Enable access logging for monitoring and debugging
+    nginx.ingress.kubernetes.io/enable-access-log: "true"
+
+spec:
+  # Ingress class specifies which ingress controller handles this resource
+  # Using nginx ingress controller for production-grade features
+  ingressClassName: nginx
+  
+  # TLS configuration for HTTPS termination
+  # Certificates are automatically managed by cert-manager
+  tls:
+    # Primary domain and www subdomain
+    - hosts:
+        - xyzhotel.com
+        - www.xyzhotel.com
+      # Secret name where TLS certificate and key are stored
+      # cert-manager will create and manage this secret
+      secretName: xyz-hotel-landing-tls
+  
+  # Routing rules for incoming HTTP/HTTPS requests
+  rules:
+    # Primary domain routing
+    - host: xyzhotel.com
+      http:
+        paths:
+          # Root path serves the landing page
+          - path: /
+            # Prefix match type routes all paths starting with /
+            pathType: Prefix
+            backend:
+              service:
+                # Route traffic to the ClusterIP service
+                name: xyz-hotel-landing-service
+                port:
+                  # Service listens on port 80, forwards to container port 8080
+                  number: 80
+    
+    # WWW subdomain routing (same configuration as primary domain)
+    - host: www.xyzhotel.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: xyz-hotel-landing-service
+                port:
+                  number: 80

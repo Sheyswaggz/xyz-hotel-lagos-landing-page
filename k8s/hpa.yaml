@@ -1,0 +1,95 @@
+# Horizontal Pod Autoscaler for XYZ Hotel Lagos Landing Page
+# Automatically scales deployment based on CPU and memory utilization
+# Ensures optimal resource usage and application availability
+
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  # HPA name following Kubernetes naming conventions
+  name: xyz-hotel-landing-hpa
+  
+  # Namespace for resource isolation
+  namespace: default
+  
+  # Labels for resource identification and selection
+  labels:
+    app: xyz-hotel-landing
+    component: frontend
+    tier: presentation
+    managed-by: kubernetes
+  
+  # Annotations for additional metadata
+  annotations:
+    description: "Horizontal Pod Autoscaler for XYZ Hotel landing page with CPU and memory-based scaling"
+    contact: "devops@xyzhotel.com"
+
+spec:
+  # Target deployment to scale
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: xyz-hotel-landing-deployment
+  
+  # Minimum number of replicas for high availability
+  # Ensures at least 2 pods are always running for zero-downtime
+  minReplicas: 2
+  
+  # Maximum number of replicas to prevent resource exhaustion
+  # Limits scaling to 5 pods during high traffic periods
+  maxReplicas: 5
+  
+  # Metrics for autoscaling decisions
+  metrics:
+    # CPU-based autoscaling
+    # Scales up when average CPU utilization exceeds 70%
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 70
+    
+    # Memory-based autoscaling
+    # Scales up when average memory utilization exceeds 80%
+    - type: Resource
+      resource:
+        name: memory
+        target:
+          type: Utilization
+          averageUtilization: 80
+  
+  # Scaling behavior configuration for controlled scaling
+  behavior:
+    # Scale down behavior - conservative approach
+    scaleDown:
+      # Wait 5 minutes before scaling down to avoid flapping
+      # Ensures traffic patterns are stable before reducing capacity
+      stabilizationWindowSeconds: 300
+      
+      # Scale down policies
+      policies:
+        # Remove maximum 1 pod per minute
+        # Prevents aggressive scale-down that could impact availability
+        - type: Pods
+          value: 1
+          periodSeconds: 60
+      
+      # Use the policy that results in the smallest change
+      selectPolicy: Min
+    
+    # Scale up behavior - aggressive approach
+    scaleUp:
+      # Scale up immediately when threshold is exceeded
+      # Ensures quick response to traffic spikes
+      stabilizationWindowSeconds: 0
+      
+      # Scale up policies
+      policies:
+        # Double the number of pods (100% increase) every 60 seconds
+        # Allows rapid scaling during traffic surges
+        - type: Percent
+          value: 100
+          periodSeconds: 60
+      
+      # Use the policy that results in the largest change
+      selectPolicy: Max

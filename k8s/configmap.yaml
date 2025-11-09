@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: xyz-hotel-landing-config
+  namespace: default
+  labels:
+    app: xyz-hotel-landing
+    version: v1.0.0
+    component: frontend
+    managed-by: kubernetes
+data:
+  # Environment identifier - specifies the deployment environment
+  # Used for environment-specific behavior and logging context
+  ENVIRONMENT: "production"
+  
+  # Logging level - controls verbosity of application logs
+  # Valid values: debug, info, warn, error
+  # Production default: info (balanced logging without excessive verbosity)
+  LOG_LEVEL: "info"
+  
+  # Nginx worker processes - number of worker processes to spawn
+  # 'auto' automatically detects available CPU cores for optimal performance
+  # Nginx will create one worker per CPU core when set to 'auto'
+  NGINX_WORKER_PROCESSES: "auto"
