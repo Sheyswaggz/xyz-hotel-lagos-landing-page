@@ -76,9 +76,9 @@ const debounce = (func, wait) => {
 };
 
 /**
- * Sanitize input to prevent XSS attacks
- * @param {string} input - User input to sanitize
- * @returns {string} Sanitized string
+ * Sanitizes user input to prevent XSS attacks
+ * @param {string} input - The user input to sanitize
+ * @returns {string} Sanitized input string
  */
 const sanitizeInput = (input) => {
   const div = document.createElement('div');
@@ -104,6 +104,7 @@ const isValidPhone = (phone) => CONFIG.VALIDATION.PHONE_PATTERN.test(phone);
  * Show error message for form field
  * @param {HTMLElement} field - Input field element
  * @param {string} message - Error message to display
+ * @returns {void}
  */
 const showFieldError = (field, message) => {
   const errorId = `${field.id}-error`;
@@ -119,6 +120,7 @@ const showFieldError = (field, message) => {
 /**
  * Clear error message for form field
  * @param {HTMLElement} field - Input field element
+ * @returns {void}
  */
 const clearFieldError = (field) => {
   const errorId = `${field.id}-error`;
@@ -137,6 +139,7 @@ const clearFieldError = (field) => {
 
 /**
  * Initialize mobile menu functionality
+ * @returns {void}
  */
 const initMobileMenu = () => {
   const nav = document.querySelector(CONFIG.SELECTORS.NAV);
@@ -187,6 +190,7 @@ const initMobileMenu = () => {
 
 /**
  * Initialize smooth scroll for navigation links
+ * @returns {void}
  */
 const initSmoothScroll = () => {
   const navLinks = document.querySelectorAll(CONFIG.SELECTORS.NAV_LINKS);
@@ -244,6 +248,7 @@ const initSmoothScroll = () => {
 
 /**
  * Initialize image gallery lightbox functionality
+ * @returns {void}
  */
 const initGalleryLightbox = () => {
   const galleryImages = document.querySelectorAll(CONFIG.SELECTORS.GALLERY_ITEMS);
@@ -281,6 +286,7 @@ const initGalleryLightbox = () => {
   /**
    * Show lightbox with specific image
    * @param {number} index - Index of image to display
+   * @returns {void}
    */
   const showLightbox = (index) => {
     currentIndex = index;
@@ -302,6 +308,7 @@ const initGalleryLightbox = () => {
 
   /**
    * Close lightbox
+   * @returns {void}
    */
   const closeLightbox = () => {
     lightbox.classList.remove(CONFIG.CLASSES.ACTIVE);
@@ -311,6 +318,7 @@ const initGalleryLightbox = () => {
 
   /**
    * Show next image
+   * @returns {void}
    */
   const showNext = () => {
     currentIndex = (currentIndex + 1) % imageArray.length;
@@ -319,6 +327,7 @@ const initGalleryLightbox = () => {
 
   /**
    * Show previous image
+   * @returns {void}
    */
   const showPrev = () => {
     currentIndex = (currentIndex - 1 + imageArray.length) % imageArray.length;
@@ -428,6 +437,7 @@ const validateField = (field) => {
 
 /**
  * Initialize contact form validation
+ * @returns {void}
  */
 const initFormValidation = () => {
   const form = document.querySelector(CONFIG.SELECTORS.CONTACT_FORM);
@@ -504,7 +514,8 @@ const initFormValidation = () => {
 // ============================================
 
 /**
- * Initialize lazy loading for images
+ * Initializes lazy loading for images using Intersection Observer
+ * @returns {void}
  */
 const initLazyLoading = () => {
   // Check for Intersection Observer support
@@ -545,7 +556,8 @@ const initLazyLoading = () => {
 // ============================================
 
 /**
- * Initialize scroll animations for sections
+ * Initializes scroll animations for sections
+ * @returns {void}
  */
 const initScrollAnimations = () => {
   // Check for Intersection Observer support
@@ -582,6 +594,7 @@ const initScrollAnimations = () => {
 
 /**
  * Initialize all interactive features
+ * @returns {void}
  */
 const init = () => {
   try {
