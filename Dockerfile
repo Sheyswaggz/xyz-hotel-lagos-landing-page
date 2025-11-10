@@ -4,9 +4,6 @@ LABEL maintainer="XYZ Hotel Lagos" \
       description="XYZ Hotel Lagos Landing Page" \
       version="1.0.0"
 
-RUN addgroup -g 1001 -S nginx && \
-    adduser -S -u 1001 -G nginx nginx
-
 COPY --chown=nginx:nginx nginx.conf /etc/nginx/nginx.conf
 COPY --chown=nginx:nginx index.html /usr/share/nginx/html/
 COPY --chown=nginx:nginx robots.txt /usr/share/nginx/html/
